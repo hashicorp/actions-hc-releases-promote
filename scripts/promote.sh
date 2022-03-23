@@ -2,5 +2,5 @@
 
 VERSION=${VERSION//v}
 
-bob promote -product-name "$PRODUCT_NAME" \
+hc-releases promote -product "$PRODUCT_NAME" \
 -version "$VERSION" -source-env "$SOURCE_ENV"
