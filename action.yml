@@ -20,6 +20,15 @@ inputs:
   hc-releases-source_env_key:
     description: 'hc releases source env api key'
     required: true
+  skip-terraform-registry-sync:
+    description: >
+      Set to "true" to skip syncing providers to the Terraform registry.
+      This value is not used for non terraform provider projects.
+    required: false
+    default: "false"
+  hc-releases-terraform-registry-sync-token:
+    description: 'Terraform registry sync token'
+    required: false
 runs:
   using: "composite"
   steps:
@@ -32,5 +41,7 @@ runs:
           VERSION: ${{ inputs.version }}
           PRODUCT_NAME: ${{ inputs.product-name }}
           SOURCE_ENV: ${{ inputs.source-env }}
+          SKIP_TERRAFORM_SYNC: ${{ inputs.skip-terraform-registry-sync }}
+          HC_RELEASES_REGISTRY_SYNC_TOKEN: ${{ inputs.hc-releases-terraform-registry-sync-token }}
         run: |
           ${{ github.action_path }}/scripts/promote.sh
