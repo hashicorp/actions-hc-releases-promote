@@ -1,6 +1,9 @@
 name: 'Publish metadata and artifacts with hc-releases'
 description: 'Use hc-releases to create metadata and upload files.'
 inputs:
+  private-tools-token:
+    description: 'Token with permission to download bob and hc-releases'
+    required: true
   product-name:
     description: 'Product name'
     required: true
@@ -32,6 +35,10 @@ inputs:
 runs:
   using: "composite"
   steps:
+      - name: Setup hc-releases
+        uses: hashicorp/setup-hc-releases@v2
+        with:
+          github-token: "${{ inputs.private-tools-token }}"
       - name: Promote artifacts and release meta-data
         shell: bash
         env:
