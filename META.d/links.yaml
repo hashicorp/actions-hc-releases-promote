@@ -1,0 +1,6 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: MPL-2.0
+
+other_links:
+  - name: actions-hc-releases-promote
+    link: https://github.com/hashicorp/actions-hc-releases-promote
